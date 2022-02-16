@@ -1,0 +1,93 @@
+
+{% extends "base.html" %}
+
+{% block main %}
+
+<h1> Contact Form </h1>
+<hr>
+<p> Fill in this form to contact to the site owners</p>
+
+<!-- <form action="{{url_for('contact') }}" method="post">
+    {{ form.crsf_token }}
+
+    <p>
+        {{form.name.label}}
+        {{form.name(size=50)}}
+    </p>
+
+    <p>
+        {{form.email.label}}
+        {{form.email(size=50)}}
+    </p>
+
+    <p>
+        {{form.subject.label}}
+        {{form.subject(size=50)}}
+    </p>
+
+    <p>
+        {{form.message.label}} 
+        {{form.message(size=100)}}
+    </p>
+
+    <p> {{form.submit()}} </p>
+ -->
+ <form method="POST" action="{{ url_for('contact') }}">
+     
+    {{ form.csrf_token }}
+
+    <div class="form-group">
+        <p>
+            <strong>
+                {{ form.name.label }}  
+            </strong>
+            <span style="color:red">(Required)</span>
+            <div id="message"> Please enter your full name </div>
+        </p>
+        {{ form.name}}
+    
+    </div>
+    <br>
+    
+    <div class="form-group">
+        <p>
+            <strong>
+                {{ form.email.label }}
+            </strong>
+            <span style="color:red">(Required)</span>
+            <div id="message"> Please enter your email address </div>
+        </p>
+        {{ form.email}}
+    
+    </div>
+    <br>
+
+    <div class="form-group">
+    <p>
+        <strong>
+            {{ form.subject.label }}
+        </strong>
+        <span style="color:red">(Required)</span>
+        <div id="message"> Please enter a subject for your message </div>
+    </p>
+    {{ form.subject}}
+    
+    </div>
+    <br>
+
+    <div class="form-group">
+    <p>
+        <strong>
+            {{ form.message.label }}
+        </strong> 
+        <span style="color:red">(Required)</span>
+        <div id="message"> Please enter the mesage you would like to send </div>
+    </p>
+    {{ form.message}}
+    </div>
+
+    <button type="Send">Send</button>
+
+</form>
+
+{% endblock %}
